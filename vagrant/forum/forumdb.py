@@ -1,7 +1,7 @@
 # "Database code" for the DB Forum.
 
 import datetime
-import psycopg2
+import psycopg2, bleach
 
 POSTS = [("This is the first post.", datetime.datetime.now())]
 DBNAME = "forum"
@@ -20,7 +20,7 @@ def add_post(content):
     db = psycopg2.connect(database=DBNAME)
     query = "INSERT INTO posts (content) VALUES (%s)"
     cursor = db.cursor()
-    cursor.execute(query,(content,))
+    cursor.execute(query,(bleach.clean(content),))
     db.commit()
     db.close()
 
