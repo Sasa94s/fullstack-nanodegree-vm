@@ -20,8 +20,15 @@ def add_post(content):
     db = psycopg2.connect(database=DBNAME)
     query = "INSERT INTO posts (content) VALUES (%s)"
     cursor = db.cursor()
-    cursor.execute(query,(bleach.clean(content),))
+    cursor.execute(query, (bleach.clean(content),))
     db.commit()
     db.close()
 
-
+def update_post(main, alt):
+    """Update posts from the 'database' which is spam"""
+    db = psycopg2.connect(database=DBNAME)
+    query = "UPDATE posts SET content=(%s) WHERE content LIKE %s"
+    cursor = db.cursor()
+    cursor.execute(query, (bleach.clean(alt), main,))
+    db.commit()
+    db.close()

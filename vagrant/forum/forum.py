@@ -4,7 +4,7 @@
 
 from flask import Flask, request, redirect, url_for
 
-from forumdb import get_posts, add_post
+from forumdb import get_posts, add_post, update_post
 
 app = Flask(__name__)
 
@@ -55,6 +55,7 @@ def post():
   '''New post submission.'''
   message = request.form['content']
   add_post(message)
+  update_post("%spam%", "Cheese!")
   return redirect(url_for('main'))
 
 
