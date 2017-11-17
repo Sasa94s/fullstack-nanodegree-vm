@@ -32,3 +32,11 @@ def update_post(main, alt):
     cursor.execute(query, (bleach.clean(alt), main,))
     db.commit()
     db.close()
+
+def delete_post(key):
+    db = psycopg2.connect(database=DBNAME)
+    query = "DELETE FROM posts WHERE content = %s"
+    cursor = db.cursor()
+    cursor.execute(query, (key,))
+    db.commit()
+    db.close()
