@@ -81,15 +81,15 @@ def print_result(msg,
     print(msg)  # printing message
     for index, result in enumerate(results):  # iterating over a fixed list of size(2)
         print("{}) {}{}{} {}\t{} {}{} {}{}".format(show_index * (index+1),
-                                                     show_article * 'Article:',
-                                                     show_author * 'Author:',
-                                                     show_date * 'Date:',
-                                                     result[0],
-                                                     show_popularity * 'Popularity:',
-                                                     show_errors * 'Errors:',
-                                                     result[1],
-                                                     show_popularity * 'views',
-                                                     show_errors * '%'))
+                                                   show_article * 'Article:',
+                                                   show_author * 'Author:',
+                                                   show_date * 'Date:',
+                                                   result[0],
+                                                   show_popularity * 'Popularity:',
+                                                   show_errors * 'Errors:',
+                                                   result[1],
+                                                   show_popularity * 'views',
+                                                   show_errors * '%'))
 
 if __name__ == '__main__':
     articles = get_result_set(query1)  # loading top articles
